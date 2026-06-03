@@ -1,5 +1,6 @@
 /* Paleta e tipografia alinhadas ao site www.bluebirdsbr.com (tema Wix) */
 :root {
+  /* Cores do tema claro */
   --branco: #ffffff;
   --texto-escuro: #222121;
   --texto: #3d3c3c;
@@ -15,7 +16,88 @@
   --raio: 8px;
   --largura-max: 640px;
   --espaco-seguro-inferior: env(safe-area-inset-bottom, 0px);
-  --espaco-seguro-lateral: env(safe-area-inset-left, 0px) env(safe-area-inset-right, 0px);
+  --espaco-seguro-lateral: env(safe-area-inlet-left, 0px) env(safe-area-inset-right, 0px);
+}
+
+/* Cores do tema escuro */
+:root {
+  --dark-fundo: #121212;
+  --dark-fundo-card: #1e1e1e;
+  --dark-texto: #e0e0e0;
+  --dark-texto-escuro: #ffffff;
+  --dark-texto-nav: #a0a0a0;
+  --dark-borda: #333333;
+  --dark-sombra-leve: 0 2px 12px rgba(0, 0, 0, 0.3);
+  --dark-sombra-media: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* Aplicação do tema escuro */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --branco: var(--dark-fundo);
+    --texto-escuro: var(--dark-texto-escuro);
+    --texto: var(--dark-texto);
+    --texto-nav: var(--dark-texto-nav);
+    --sombra-leve: var(--dark-sombra-leve);
+    --sombra-media: var(--dark-sombra-media);
+  }
+
+  .cabecalho {
+    background: var(--dark-fundo-card);
+    border-bottom-color: var(--dark-borda);
+  }
+
+  .menu-mobile__botao,
+  .nav {
+    background: var(--dark-fundo-card);
+    border-color: var(--dark-borda);
+    color: var(--dark-texto-nav);
+  }
+
+  .nav__link {
+    border-bottom-color: var(--dark-borda);
+    color: var(--dark-texto-nav);
+  }
+
+  .nav__link:hover,
+  .nav__link:active {
+    background: rgba(167, 207, 243, 0.12);
+    color: var(--azul-claro);
+  }
+
+  .menu-mobile__botao::after {
+    border-right-color: var(--azul-claro);
+    border-bottom-color: var(--azul-claro);
+  }
+
+  .intro,
+  .destaque {
+    background: var(--dark-fundo);
+    color: var(--dark-texto);
+  }
+
+  .intro__titulo {
+    color: var(--dark-texto);
+    border-left-color: var(--dark-texto-nav);
+  }
+
+  .destaque__titulo {
+    color: var(--dark-texto-escuro);
+  }
+
+  .destaque__subtitulo {
+    color: var(--dark-texto-nav);
+  }
+
+  .botao--secundario {
+    background: var(--dark-fundo-card);
+    color: var(--azul-claro);
+    border-color: var(--azul-claro);
+  }
+
+  .botao--secundario:hover {
+    background: rgba(88, 167, 237, 0.12);
+  }
 }
 
 *,
@@ -94,6 +176,122 @@ summary:focus-visible,
   top: 0;
   z-index: 100;
   box-shadow: var(--sombra-leve);
+}
+
+/* Botão Dark Mode */
+.dark-mode-toggle {
+  position: absolute;
+  top: 1rem;
+  right: max(1rem, env(safe-area-inset-right));
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: var(--branco);
+  border: 1px solid var(--texto-nav);
+  border-radius: var(--raio);
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--texto-nav);
+  transition: all 0.2s ease;
+}
+
+.dark-mode-toggle:hover {
+  background: rgba(43, 108, 163, 0.08);
+  color: var(--azul-marca);
+  border-color: var(--azul-marca);
+}
+
+.dark-mode-toggle:active {
+  transform: scale(0.95);
+}
+
+.dark-mode-toggle svg {
+  transition: transform 0.2s ease;
+}
+
+.dark-mode-toggle:hover svg {
+  transform: rotate(180deg);
+}
+
+/* Modo dark manual */
+.dark {
+  --branco: var(--dark-fundo);
+  --texto-escuro: var(--dark-texto-escuro);
+  --texto: var(--dark-texto);
+  --texto-nav: var(--dark-texto-nav);
+  --sombra-leve: var(--dark-sombra-leve);
+  --sombra-media: var(--dark-sombra-media);
+}
+
+.dark .cabecalho {
+  background: var(--dark-fundo-card);
+  border-bottom-color: var(--dark-borda);
+}
+
+.dark .menu-mobile__botao,
+.dark .nav {
+  background: var(--dark-fundo-card);
+  border-color: var(--dark-borda);
+  color: var(--dark-texto-nav);
+}
+
+.dark .nav__link {
+  border-bottom-color: var(--dark-borda);
+  color: var(--dark-texto-nav);
+}
+
+.dark .nav__link:hover,
+.dark .nav__link:active {
+  background: rgba(167, 207, 243, 0.12);
+  color: var(--azul-claro);
+}
+
+.dark .menu-mobile__botao::after {
+  border-right-color: var(--azul-claro);
+  border-bottom-color: var(--azul-claro);
+}
+
+.dark .intro,
+.dark .destaque {
+  background: var(--dark-fundo);
+  color: var(--dark-texto);
+}
+
+.dark .intro__titulo {
+  color: var(--dark-texto);
+  border-left-color: var(--dark-texto-nav);
+}
+
+.dark .destaque__titulo {
+  color: var(--dark-texto-escuro);
+}
+
+.dark .destaque__subtitulo {
+  color: var(--dark-texto-nav);
+}
+
+.dark .botao--secundario {
+  background: var(--dark-fundo-card);
+  color: var(--azul-claro);
+  border-color: var(--azul-claro);
+}
+
+.dark .botao--secundario:hover {
+  background: rgba(88, 167, 237, 0.12);
+}
+
+.dark .whatsapp-flutuante {
+  background: #1e8e3e;
+}
+
+/* Ajuste para botão dark mode em telas maiores */
+@media (min-width: 480px) {
+  .dark-mode-toggle {
+    top: 0.5rem;
+  }
 }
 
 .cabecalho__topo {
@@ -551,5 +749,30 @@ summary:focus-visible,
 
   .whatsapp-flutuante {
     display: none;
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --largura-max: 960px;
+  }
+
+  .nav__link {
+    font-size: 0.85rem;
+    padding: 0.75rem 1.25rem;
+  }
+
+  .intro__titulo {
+    font-size: 1.5rem;
+  }
+  
+  .intro__texto p {
+    font-size: 1rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  :root {
+    --largura-max: 1140px;
   }
 }
